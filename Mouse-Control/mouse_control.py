@@ -44,12 +44,12 @@ while execute == True:
     resultGreen = cv.bitwise_and(frame, frame, mask=maskGreen)
     frameGreen = cv.cvtColor(resultGreen, cv.COLOR_BGR2GRAY)
     
-    # Valores do laranja em HSV
-    lowerOrange = np.array([20, 100, 100])
-    upperOrange = np.array([30, 255, 255])
-    maskOrange = cv.inRange(frameHsv, lowerOrange, upperOrange)
-    resultOrange = cv.bitwise_and(frame, frame, mask=maskOrange)
-    frameOrange = cv.cvtColor(resultOrange, cv.COLOR_BGR2GRAY)
+    # Valores do amarelo em HSV
+    lowerYellow = np.array([20, 100, 100])
+    upperYellow = np.array([30, 255, 255])
+    maskYellow = cv.inRange(frameHsv, lowerYellow, upperYellow)
+    resultYellow = cv.bitwise_and(frame, frame, mask=maskYellow)
+    frameYellow = cv.cvtColor(resultYellow, cv.COLOR_BGR2GRAY)
 
     # Valores do vermelho em HSV
     lowerRed = np.array([160, 70, 100])
@@ -104,7 +104,7 @@ while execute == True:
             # Faz o clique com o botão direito do mouse
             pyautogui.click(button='right')
     
-    _, thresh = cv.threshold(frameOrange, 2, 255, cv.THRESH_BINARY)
+    _, thresh = cv.threshold(frameYellow, 2, 255, cv.THRESH_BINARY)
     contornos, _ = cv.findContours(
         thresh, cv.RETR_LIST, cv.CHAIN_APPROX_SIMPLE)
     for contorno in contornos:
